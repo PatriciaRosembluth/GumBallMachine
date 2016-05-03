@@ -27,7 +27,8 @@ public class GumballMachine {
 				System.out.println(Messages.INSERT_TWICE);
 		}
 		else if (state.getState() == 0) {
-			System.out.println(Messages.INSERT_WHEN_SOLDOUT);
+			state.ShowMessage(count, "insert");
+			//System.out.println(Messages.INSERT_WHEN_SOLDOUT);
 		}
 		else if (state.getState() == 3) {
 			System.out.println(Messages.INSERT_WHEN_SOLD);
@@ -44,14 +45,16 @@ public class GumballMachine {
 		else if (state.getState() == 1)
 			System.out.println(Messages.EJECT_WHEN_NO_QUARTER);
 		else if (state.getState() == 0)
-			System.out.println(Messages.EJECT_WHEN_SOLD_OUT);
+			//System.out.println(Messages.EJECT_WHEN_SOLD_OUT);
+			state.ShowMessage(count, "eject");
 		else if (state.getState() == 3)
 			System.out.println(Messages.EJECT_WHEN_SOLD);
 	}
 
 	public void turnCrank() {
 		if (state.getState() == 0)
-			System.out.println(Messages.TURN_WHEN_SOLD_OUT);
+			//System.out.println(Messages.TURN_WHEN_SOLD_OUT);
+			state.ShowMessage(count, "turnCrank");
 		else if (state.getState() == 1)
 			System.out.println(Messages.TURN_WHEN_NO_QUARTER);
 		else if (state.getState() == 2) {
@@ -71,11 +74,13 @@ public class GumballMachine {
 			if (count == 0) {
 				//state = SOLD_OUT;
 				state = new SoldOutState();
-				System.out.println(Messages.DISPENSE_LAST_GUMBALL);
+				//System.out.println(Messages.DISPENSE_LAST_GUMBALL);
+				state.ShowMessage(count, "dispenseLast");
 			}
 		}
 		else if (state.getState() == 0)
-			System.out.println(Messages.DISPENSE_WHEN_SOLD_OUT);
+			//System.out.println(Messages.DISPENSE_WHEN_SOLD_OUT);
+			state.ShowMessage(count, "dispense");
 		else if (state.getState() == 1)
 			System.out.println(Messages.DISPENSE_WHEN_NO_QUARTER);
 		else if (state.getState() == 2)
