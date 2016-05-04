@@ -10,12 +10,9 @@ public class SoldState implements MachineState{
 		}else if(coins == 1 && operation == "dispense"){
 			System.out.println(Messages.DISPENSE_SUCCESSFULLY);
 		}
-		
-		
 	}
 
-	public int getState() {
-		return 3;
+	public String getState() {
+		return "SOLD";
 	}
-
 }

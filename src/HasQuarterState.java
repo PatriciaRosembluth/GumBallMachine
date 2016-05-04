@@ -11,8 +11,8 @@ public class HasQuarterState implements MachineState{
 		
 	}
 
-	public int getState() {
-		return 2;
+	public String getState() {
+		return "HAS_QUARTER";
 	}
 
 }

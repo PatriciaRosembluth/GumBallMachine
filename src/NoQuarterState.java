@@ -10,14 +10,11 @@ public class NoQuarterState implements MachineState {
 			System.out.println(Messages.TURN_WHEN_NO_QUARTER);
 		}else if (coins == 1 && operation == "dispense"){
 			System.out.println(Messages.DISPENSE_WHEN_NO_QUARTER);
-		}
-		
-		
-		
+		}		
 	}
 
-	public int getState() {
-		return 1;
+	public String getState() {
+		return "NO_QUARTER";
 	}
 
 }

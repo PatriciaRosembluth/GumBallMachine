@@ -3,6 +3,7 @@ public class GumballMachine {
 	
 	MachineState state = new SoldOutState();
 	private int count;
+	private String operation;
 
 	public GumballMachine(int count) {
 		this.count = count;
@@ -11,64 +12,51 @@ public class GumballMachine {
 	}
 
 	public void insertQuarter() {
-		if (state.getState() == 1) {
+		operation = "insert";
+		if (state.getState() == "NO_QUARTER") {
 			state = new HasQuarterState();
-			state.ShowMessage(count, "insert");
 		}
-		else if (state.getState() == 2) {
-			state.ShowMessage(count+1, "insert");
+		else if (state.getState() == "HAS_QUARTER") {
+			count++;
 		}
-		else if (state.getState() == 0) {
-			state.ShowMessage(count, "insert");
-		}
-		else if (state.getState() == 3) {
-			state.ShowMessage(count, "insert");
-		}
-			
+		state.ShowMessage(count, operation);			
 	}
 
 	public void ejectQuarter() {
-		if (state.getState() == 2) {
+		operation = "eject";
+		if (state.getState() == "HAS_QUARTER") {
 			state = new NoQuarterState();
-			state.ShowMessage(count, "eject");
 		}
-		else if (state.getState() == 1)
-			state.ShowMessage(count-1, "eject");
-		else if (state.getState() == 0)
-			state.ShowMessage(count, "eject");
-		else if (state.getState() == 3)
-			state.ShowMessage(count, "eject");
+		else if (state.getState() == "NO_QUARTER"){
+			count --;
+		}
+		state.ShowMessage(count, operation);
 	}
 
 	public void turnCrank() {
-		if (state.getState() == 0)
-			state.ShowMessage(count, "turnCrank");
-		else if (state.getState() == 1)
-			state.ShowMessage(count, "turnCrank");
-		else if (state.getState() == 2) {
+		operation = "turnCrank";
+		if (state.getState() == "HAS_QUARTER") {
 			state = new SoldState();
-			state.ShowMessage(count, "turnCrank");
-			dispense();
 		}
-		else if (state.getState() == 3)
-			System.out.println(Messages.TURN_TWICE);
+		state.ShowMessage(count, operation);
+		dispense();
 	}
 
 	public void dispense() {
-		if (state.getState() == 3) {
-			state.ShowMessage(count, "dispense");
-			count = count - 1;
+		operation = "dispense";
+		if (state.getState() == "SOLD") {
+			state.ShowMessage(count, operation);
+			count --;
 			if (count == 0) {
 				state = new SoldOutState();
-				state.ShowMessage(count, "dispenseLast");
+				count--;
 			}
 		}
-		else if (state.getState() == 0)
-			state.ShowMessage(count, "dispense");
-		else if (state.getState() == 1)
-			state.ShowMessage(count, "dispense");
-		else if (state.getState() == 2)
-			state.ShowMessage(count+1, "dispense");
+		else if (state.getState() == "HAS_QUARTER"){
+			count ++;
+		}
+		state.ShowMessage(count, operation);
+			
 	}
 
 }
