@@ -21,10 +21,12 @@ public class GumballMachine {
 		if (state.getState() == 1) {
 			//state = HAS_QUARTER;
 			state = new HasQuarterState();
-			System.out.println(Messages.INSERT_SUCCESSFULLY);
+			//System.out.println(Messages.INSERT_SUCCESSFULLY);
+			state.ShowMessage(count, "insert");
 		}
 		else if (state.getState() == 2) {
-				System.out.println(Messages.INSERT_TWICE);
+			//System.out.println(Messages.INSERT_TWICE);
+			state.ShowMessage(count+1, "insert");
 		}
 		else if (state.getState() == 0) {
 			state.ShowMessage(count, "insert");
@@ -40,7 +42,8 @@ public class GumballMachine {
 		if (state.getState() == 2) {
 			//state = NO_QUARTER;
 			state = new NoQuarterState();
-			System.out.println(Messages.EJECT_SUCCESSFULLY);
+			//System.out.println(Messages.EJECT_SUCCESSFULLY);
+			state.ShowMessage(count, "eject");
 		}
 		else if (state.getState() == 1)
 			//System.out.println(Messages.EJECT_WHEN_NO_QUARTER);
@@ -87,7 +90,8 @@ public class GumballMachine {
 			//System.out.println(Messages.DISPENSE_WHEN_NO_QUARTER);
 			state.ShowMessage(count, "dispense");
 		else if (state.getState() == 2)
-			System.out.println(Messages.DISPENSE_WHEN_HAS_QUARTER);
+			//System.out.println(Messages.DISPENSE_WHEN_HAS_QUARTER);
+			state.ShowMessage(count+1, "dispense");
 	}
 
 }
