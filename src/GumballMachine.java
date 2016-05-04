@@ -43,7 +43,8 @@ public class GumballMachine {
 			System.out.println(Messages.EJECT_SUCCESSFULLY);
 		}
 		else if (state.getState() == 1)
-			System.out.println(Messages.EJECT_WHEN_NO_QUARTER);
+			//System.out.println(Messages.EJECT_WHEN_NO_QUARTER);
+			state.ShowMessage(count-1, "eject");
 		else if (state.getState() == 0)
 			//System.out.println(Messages.EJECT_WHEN_SOLD_OUT);
 			state.ShowMessage(count, "eject");
@@ -56,7 +57,8 @@ public class GumballMachine {
 			//System.out.println(Messages.TURN_WHEN_SOLD_OUT);
 			state.ShowMessage(count, "turnCrank");
 		else if (state.getState() == 1)
-			System.out.println(Messages.TURN_WHEN_NO_QUARTER);
+			//System.out.println(Messages.TURN_WHEN_NO_QUARTER);
+			state.ShowMessage(count, "turnCrank");
 		else if (state.getState() == 2) {
 			//state = SOLD;
 			state = new SoldState();
@@ -82,7 +84,8 @@ public class GumballMachine {
 			//System.out.println(Messages.DISPENSE_WHEN_SOLD_OUT);
 			state.ShowMessage(count, "dispense");
 		else if (state.getState() == 1)
-			System.out.println(Messages.DISPENSE_WHEN_NO_QUARTER);
+			//System.out.println(Messages.DISPENSE_WHEN_NO_QUARTER);
+			state.ShowMessage(count, "dispense");
 		else if (state.getState() == 2)
 			System.out.println(Messages.DISPENSE_WHEN_HAS_QUARTER);
 	}
