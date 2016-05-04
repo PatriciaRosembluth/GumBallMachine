@@ -33,7 +33,8 @@ public class GumballMachine {
 			//System.out.println(Messages.INSERT_WHEN_SOLDOUT);
 		}
 		else if (state.getState() == 3) {
-			System.out.println(Messages.INSERT_WHEN_SOLD);
+			//System.out.println(Messages.INSERT_WHEN_SOLD);
+			state.ShowMessage(count, "insert");
 		}
 			
 	}
@@ -52,7 +53,8 @@ public class GumballMachine {
 			//System.out.println(Messages.EJECT_WHEN_SOLD_OUT);
 			state.ShowMessage(count, "eject");
 		else if (state.getState() == 3)
-			System.out.println(Messages.EJECT_WHEN_SOLD);
+			//System.out.println(Messages.EJECT_WHEN_SOLD);
+			state.ShowMessage(count, "eject");
 	}
 
 	public void turnCrank() {
@@ -65,7 +67,8 @@ public class GumballMachine {
 		else if (state.getState() == 2) {
 			//state = SOLD;
 			state = new SoldState();
-			System.out.println(Messages.TURN_SUCCESSFULLY);
+			//System.out.println(Messages.TURN_SUCCESSFULLY);
+			state.ShowMessage(count, "turnCrank");
 			dispense();
 		}
 		else if (state.getState() == 3)
@@ -74,7 +77,8 @@ public class GumballMachine {
 
 	public void dispense() {
 		if (state.getState() == 3) {
-			System.out.println(Messages.DISPENSE_SUCCESSFULLY);
+			//System.out.println(Messages.DISPENSE_SUCCESSFULLY);
+			state.ShowMessage(count, "dispense");
 			count = count - 1;
 			if (count == 0) {
 				//state = SOLD_OUT;
